@@ -1,5 +1,6 @@
-from albert_bot.albert_bot import fib
+from albert_bot.albert_bot import AlbertBot
 
 
-def test_fib() -> None:
-    assert False
+def test_bot_instantiate() -> None:
+    albert = AlbertBot()
+    assert albert.on_ready() == 'Logged as albert-bot!'
