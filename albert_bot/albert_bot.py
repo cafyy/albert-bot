@@ -1,5 +1,8 @@
 import discord
 import os
+import asyncio
+import time
+
 from random import choice
 from discord.ext import commands
 
@@ -19,6 +22,13 @@ async def pick_human_member(ctx):
 
     await ctx.send(f"Je choisis {chosen.name}")
 
+@bot.command(name="countdown")
+async def countdown(ctx, timeout):
+    print("Starting countdown of... " + timeout + "s")
+    countdown = Countdown(int(timeout))
+    await countdown.start()
+    await ctx.send("Hop hop hop, c'est fini !")
+
 def run():
     bot.run(os.environ.get('BOT_TOKEN'))
 
@@ -28,3 +38,15 @@ def pick_human(members):
         return None
 
     return choice(humans)
+class Countdown:
+
+    def __init__(self, timeout):
+        self.timeout = timeout
+        self.finished = False
+
+    async def start(self):
+        await asyncio.sleep(self.timeout)
+        self.finished = True
+
+
+
