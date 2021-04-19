@@ -1,4 +1,5 @@
 import discord
+import os
 from random import choice
 from discord.ext import commands
 
@@ -21,4 +22,4 @@ async def pick_human_member(ctx):
     await ctx.send(f"Je choisis {chosen.name}")
 
 def run():
-    bot.run(BOT_TOKEN)
+    bot.run(os.environ.get('BOT_TOKEN'))
