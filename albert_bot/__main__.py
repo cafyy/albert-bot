@@ -1,7 +1,6 @@
 import sys
 
-from albert_bot.albert_bot import MyClient
+from albert_bot.albert_bot import run
 
 if __name__ == "__main__":
-    client = MyClient()
-    client.run('discord token')
+    run()
